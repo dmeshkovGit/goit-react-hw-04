@@ -9,9 +9,11 @@ export const fetchImages = async (searchQuery, page = 1) => {
             client_id: USER_KEY,
             query: searchQuery,
             page: page,
-            per_page: 30,
-            
+            per_page: 28, 
         }
     })
-    return response.data.results;
+    return {
+        images: response.data.results,
+        totalPages: response.data.total_pages
+    }
 }

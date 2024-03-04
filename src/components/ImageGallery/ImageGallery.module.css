@@ -1,0 +1,27 @@
+.galelryList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 12px;
+}
+
+.galleryItem {
+  width: calc((100% - 30px) / 4);
+  height: 240px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.1);
+  transition: scale 200ms ease-in-out, box-shadow 200ms ease-in-out;
+  cursor: zoom-in;
+}
+.galleryItem:hover,
+.galleryItem:focus {
+  scale: 1.04;
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.modalImg {
+  display: block;
+}

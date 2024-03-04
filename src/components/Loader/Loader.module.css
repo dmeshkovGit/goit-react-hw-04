@@ -1,0 +1,11 @@
+.loaderWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.loadText {
+  font-size: 16px;
+}
