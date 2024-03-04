@@ -9,7 +9,7 @@ export default function SearchBar({onSubmit}) {
             <form className={css.searchForm} onSubmit={(e) => {
                 e.preventDefault();
                 if (e.target.elements[0].value === "") {
-                  toast.error("Please make sure to fill in the search area.",{duration: 1500,})
+                  toast.error("Please make sure to fill in the search area.",{duration: 2500,})
                 } else {
                 onSubmit(e.target.elements[0].value);
                 e.target.reset();
