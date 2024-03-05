@@ -35,7 +35,7 @@ export default function App() {
               return [...prevImages, ...data.images]
             })
           if (page > data.totalPages) {
-            toast.success("You have reached the last page")
+            toast.success("No more results")
           };
           setIsLoading(false);
 
