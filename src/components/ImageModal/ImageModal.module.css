@@ -1,0 +1,27 @@
+.modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  overflow: hidden;
+  width: 60%;
+  height: 60%;
+  outline: none;
+  border-radius: 3px;
+  border: 1px rgb(10, 40, 86) solid;
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.modalImg {
+  width: 100%;
+  height: 100%;
+}

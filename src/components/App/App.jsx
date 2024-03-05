@@ -3,9 +3,10 @@ import SearchBar from '../SearchBar/SearchBar'
 import css from './App.module.css'
 import { fetchImages } from '../../images-api'
 import ImageGallery from '../ImageGallery/ImageGallery'
-import ErrorMessage from '../ErrorMessege/ErrorMessege'
+import ErrorMessege from '../ErrorMessege/ErrorMessege'
 import Loader from '../Loader/Loader'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
+import ImageModal from '../ImageModal/ImageModal';
 import toast, { Toaster } from 'react-hot-toast'
 
 export default function App() {
@@ -14,6 +15,13 @@ export default function App() {
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1)
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState({
+    src: "",
+    alt: ""
+  });
+
+
 
   useEffect(() => { 
 
@@ -54,14 +62,31 @@ export default function App() {
     setPage(page + 1)
   }  
 
+  const closeModal = () => {
+  setModalIsOpen(false);
+  };
+  const handleClickOnImage = (imageUrl, imageAlt) => {
+    setActiveImage({
+    src: imageUrl,
+    alt: imageAlt
+  });
+    setModalIsOpen(true)
+  };
+
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} onChange={setSearchQuery} value={searchQuery} />
+      <SearchBar onSubmit={handleSubmit} value={searchQuery} />
+
       <div className={css.underSearchBar}>
-      {isError && <ErrorMessage />}
-      {images.length > 0 && <ImageGallery images={images} />}
+        {isError && <ErrorMessege />}
+        
+        {images.length > 0 && <ImageGallery images={images} onClick={handleClickOnImage}/>}
+
+       <ImageModal modalIsOpen={modalIsOpen} closeModal={closeModal} activeImage={activeImage}/> 
+      
       {images.length > 0 && !isLoading && <LoadMoreBtn onClick={handleChangePage} />}
-      {isLoading && <Loader />}
+        {isLoading && <Loader />}
+        
       <Toaster
        position="top-right"
        reverseOrder={false}/>
